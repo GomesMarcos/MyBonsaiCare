@@ -1,0 +1,9 @@
+# DIRECTORIES
+api/venv
+api/.idea
+api/media
+api/.vscode
+
+# FILETYPES
+*pyc
+*sqlite3
