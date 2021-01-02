@@ -1,9 +1,10 @@
-# DIRECTORIES
+# API DIRECTORIES
 api/venv
 api/.idea
 api/media
 api/.vscode
+api/.env
 
-# FILETYPES
+# API FILETYPES
 *pyc
 *sqlite3
