@@ -2,15 +2,19 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 
+from ..maintenances.models import Maintenance
+
 
 class Plant(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     cientific_name = models.CharField(max_length=255, null=True, blank=True)
+    maintenances = models.ManyToManyField(Maintenance, verbose_name="Maintenances")
+    observations = models.CharField(max_length=1000, null=True, blank=True, default='')
 
     class Meta:
-        verbose_name = "plant"
-        verbose_name_plural = "plants"
+        verbose_name = "Plant"
+        verbose_name_plural = "Plants"
 
     def __str__(self):
         return self.name
@@ -18,7 +22,7 @@ class Plant(models.Model):
 def get_image_filename(instance, filename):
     title = instance.plant.name
     slug = slugify(title)
-    return "plant_images/%s-%s" % (slug, filename)
+    return "media/plant_images/%s-%s" % (slug, filename)
 
     # def get_absolute_url(self):
     #     return reverse("plant_detail", kwargs={"pk": self.pk})
@@ -29,8 +33,8 @@ class PlantPhoto(models.Model):
     image = models.ImageField(upload_to=get_image_filename,verbose_name='Photos')
 
     class Meta:
-        verbose_name = "plantphoto"
-        verbose_name_plural = "plantphotos"
+        verbose_name = "Plant's photo"
+        verbose_name_plural = "Plant's photos"
 
     # def get_absolute_url(self):
     #     return reverse("plantphoto_detail", kwargs={"pk": self.pk})

@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'apps.plants',
     'apps.maintenances',
-    'apps.observations',
     'apps.plantgroup',
     'apps.graveyard',
 ]

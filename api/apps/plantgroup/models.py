@@ -6,15 +6,12 @@ from ..plants.models import Plant
 class PlantGroup(models.Model):
 
     name = models.CharField(max_length=255)
-    description = models.CharField(max_length=1000)
-    plant = models.ForeignKey(Plant, related_name="plant_group", on_delete=models.CASCADE)
+    description = models.CharField(max_length=1000, blank=True, null=True, default='')
+    plants = models.ManyToManyField(Plant, verbose_name="Plents")
 
-    # class Meta:
-    #     verbose_name = _("PlantGroup")
-    #     verbose_name_plural = _("PlantGroups")
+    class Meta:
+        verbose_name = "Plant Group"
+        verbose_name_plural = "Plant Groups"
 
     def __str__(self):
         return self.name
-
-    # def get_absolute_url(self):
-    #     return reverse("PlantGroup_detail", kwargs={"pk": self.pk})
