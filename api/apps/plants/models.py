@@ -11,7 +11,7 @@ class Plant(models.Model):
     cientific_name = models.CharField(max_length=255, null=True, blank=True)
     maintenances = models.ManyToManyField(Maintenance, verbose_name="Maintenances")
     observations = models.CharField(max_length=1000, null=True, blank=True, default='')
-
+    is_alive = models.BooleanField(default=True)
     class Meta:
         verbose_name = "Plant"
         verbose_name_plural = "Plants"
